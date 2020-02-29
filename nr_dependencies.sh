@@ -3,6 +3,7 @@
 # Install the software requirements
 
 echo "${_GREEN}INSTALL DEPENDS STARTED${_RESET}"
+    sudo apt-get update
     sudo apt-get install nodejs
     sudo apt-get install npm
     sudo npm install -g --unsafe-perm node-red node-red-admin

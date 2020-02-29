@@ -24,7 +24,6 @@ if [ "$_nred" = "$c1" ]; then
 # preparing script background work and work under reboot
 echo "[*] Creating nr systemd service"
 cat >/tmp/nr.service <<EOL
-    
     [Unit]
     Description=Node-RED
     After=syslog.target network.target
