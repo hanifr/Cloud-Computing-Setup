@@ -1,33 +1,12 @@
 #!/bin/bash
 
-VERSION=1.0
-
 # printing greetings
 
-echo "Installation of Node-Red for Digitalocean Droplet v$VERSION."
-echo "(please report issues to tronexia@gmail.com email with full output of this script with extra \"-x\" \"bash\" option)"
+echo "${_CYAN}Installation Progress....Node-Red :: started${_RESET}"
 echo
 
-if [ "$(id -u)" == "0" ]; then
-  echo "WARNING: Generally it is not adviced to run this script under root"
-fi
-
-if [ -z $HOME ]; then
-  echo "ERROR: Please define HOME environment variable to your home directory"
-  exit 1
-fi
-
-if [ ! -d $HOME ]; then
-  echo "ERROR: Please make sure HOME directory $HOME exists"
-  exit 1
-fi
-
-# printing intentions
-chmod +x $HOME/cloud-computing-setup/nr_dependencies.sh
-. dependencies.sh
-echo "I will setup and run in background CPU node-red."
-
-echo
+# Installation of node-red dependencies
+. nr_dependencies.sh
 
 # start doing stuff: preparing node-red
 
@@ -37,47 +16,13 @@ if sudo -n true 2>/dev/null; then
 fi
 killall -9 node-red
 
-echo "[*] Removing $HOME/nr directory"
-rm -rf $HOME/nr
-
-
-echo "[*] create directory $HOME/nr"
-[ -d $HOME/nr ] || mkdir $HOME/nr
-
 echo "Node-Red will run automatically on system start, is it OK?$_nred"
                 read -p "Enter yes or no: " _nred
 c1="yes"
 c2="no"
 if [ "$_nred" = "$c1" ]; then
-# preparing script
-
-echo "[*] Creating $HOME/nr/node-red.sh script"
-chmod +x $HOME/nr/node-red.sh
-
 # preparing script background work and work under reboot
-
-    if ! sudo -n true 2>/dev/null; then
-        if ! grep nr/node-red.sh $HOME/.profile >/dev/null; then
-            echo "[*] Adding $HOME/nr/node-red.sh script to $HOME/.profile"
-            echo "$HOME/nr/node-red.sh >/dev/null 2>&1" >>$HOME/.profile
-        else 
-            echo "Looks like $HOME/nr/node-red.sh script is already in the $HOME/.profile"
-        fi
-        echo "[*] Running node-red in the background (see logs in $HOME/nr/cpumonit.log file)"
-        /bin/bash $HOME/nr/node-red.sh >/dev/null 2>&1
-    else
-
-
-    if ! which systemctl >/dev/null; then
-
-    echo "[*] Running node-red in the background (see logs in $HOME/nr/cpumonit.log file)"
-    /bin/bash $HOME/nr/node-red.sh >/dev/null 2>&1
-    echo "ERROR: This script requires \"systemctl\" systemd utility to work correctly."
-    echo "Please move to a more modern Linux distribution or setup node-red activation after reboot yourself if possible."
-
-    else
-
-    echo "[*] Creating nr systemd service"
+echo "[*] Creating nr systemd service"
 cat >/tmp/nr.service <<EOL
     
     [Unit]
@@ -102,21 +47,18 @@ cat >/tmp/nr.service <<EOL
 EOL
     sudo mv /tmp/nr.service /etc/systemd/system/nr.service
     echo "[*] Starting nr systemd service"
-    sudo killall nr 2>/dev/null
     sudo systemctl daemon-reload
     sudo systemctl enable nr.service
     sudo systemctl start nr.service
-    echo "To see node-red service logs run \"sudo journalctl -u nr -f\" command"
-  fi
-fi
-echo "The apps is now running on background"
+    echo "To see node-red status run \"sudo systemctl status nr.service \" command"
+echo "${_YELLOW}The apps is now running on background${_RESET}"
 fi
 
 if [ "$_nred" = "$c2" ]; then
 echo
-echo "Please execute node-red to run the apps."
-echo "Enjoy!!!"
+echo "${_YELLOW}Please execute node-red to run the apps.${_RESET}"
+echo "${_YELLOW}Enjoy!!!${_RESET}"
 echo
 fi
 
-echo "[*] Setup complete"
+echo "${_MAGENTA}Installation Progress....Node-Red :: completed${_RESET}"
