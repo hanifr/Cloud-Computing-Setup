@@ -60,4 +60,10 @@ echo "${_YELLOW}Enjoy!!!${_RESET}"
 echo
 fi
 
-echo "${_MAGENTA}Installation Progress....Node-Red :: completed${_RESET}"
+echo "${_RED}Change example.com to your domain_name \"sudo nano nr_web_set.sh\"${_RESET}"
+echo
+echo "${_RED}Once finish, hit ctrl + o to save and ctrl + x to exit${_RESET}"
+echo
+echo "${_RED}To setup your website to your domain_name, run \"./nr_web_set.sh\"${_RESET}"
+echo
+#. nr_web_set.sh

@@ -33,6 +33,7 @@ echo "${_CYAN}Installation Progress....${_RESET}"
 chmod +x $HOME/cloud-computing-setup/nred.sh
 chmod +x $HOME/cloud-computing-setup/nr_dependencies.sh
 chmod +x $HOME/cloud-computing-setup/mosq.sh
+chmod +x $HOME/cloud-computing-setup/mosq_back.sh
 chmod +x $HOME/cloud-computing-setup/fireset.sh
 
 . nred.sh
@@ -48,5 +49,5 @@ echo "${_CYAN}Do you want to keep the setup files?${_RESET} $_setfile"
 c1="yes"
         if [ "$_setfile" = "$c1" ]; then
         rm -rf $HOME/cloud-computing-setup
-        echo "Your CPU architect is intel"
+        echo "The setup files have been deleted"
         fi
