@@ -33,5 +33,6 @@ echo "${_YELLOW}head to \"cd /etc/mosquitto/conf.d/default.conf\" and change${_R
 echo
 echo "${_YELLOW}\"localhost to domain\" if you have one${_RESET}"
 echo
-
+echo "${_YELLOW}Execute \"sudo systemctl status mosquitto\" to check the operation status${_RESET}"
+echo
 echo "${_MAGENTA}Installation Progress....MQTT Mosquitto :: completed${_RESET}"
