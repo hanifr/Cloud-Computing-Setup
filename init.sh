@@ -41,11 +41,14 @@ sleep 5
 . mosq.sh
 sleep 5
 . fireset.sh
+sleep 5
 echo 
 echo "${_CYAN}Installation Progress....Node-Red, Mosquitto, and Firewall are all completed${_RESET}"
 echo
+sleep 5
 echo "${_CYAN}If you require to use web-server, please clone https://github.com/hanifr/Nginx-Server-Blocks.git${_RESET}"
 echo
+sleep 5
 echo "${_CYAN}Do you want delete the setup files?${_RESET} $_setfile"
                 read -p "Enter yes or no: " _setfile
 c1="yes"
