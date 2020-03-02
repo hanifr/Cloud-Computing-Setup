@@ -5,8 +5,11 @@
 echo "${_GREEN}INSTALL DEPENDS STARTED${_RESET}"
     # Install NodeJS
     sudo apt-get update
-    curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-    sudo bash nodesource_setup.sh
+    #curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+    #sudo bash nodesource_setup.sh
+
+    sudo apt-get upgrade -y
+    sleep 5
     sudo apt install nodejs
     sudo apt-get install npm
     
