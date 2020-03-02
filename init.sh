@@ -1,6 +1,6 @@
 #!/bin/bash
 # Colors
-_CYAN=`tput setaf 1`
+_RED=`tput setaf 1`
 _GREEN=`tput setaf 2`
 _YELLOW=`tput setaf 3`
 _BLUE=`tput setaf 4`
@@ -34,6 +34,7 @@ chmod +x $HOME/Cloud-Computing-Setup/nred.sh
 chmod +x $HOME/Cloud-Computing-Setup/nr_dependencies.sh
 chmod +x $HOME/Cloud-Computing-Setup/mosq.sh
 chmod +x $HOME/Cloud-Computing-Setup/fireset.sh
+chmod +x $HOME/Cloud-Computing-Setup/nr_secured.sh
 
 . nred.sh
 sleep 5
@@ -43,10 +44,14 @@ sleep 5
 echo 
 echo "${_CYAN}Installation Progress....Node-Red, Mosquitto, and Firewall are all completed${_RESET}"
 echo
+echo "${_CYAN}If you require to use web-server, please clone https://github.com/hanifr/Nginx-Server-Blocks.git${_RESET}"
+echo
 echo "${_CYAN}Do you want delete the setup files?${_RESET} $_setfile"
                 read -p "Enter yes or no: " _setfile
 c1="yes"
         if [ "$_setfile" = "$c1" ]; then
-        rm -rf $HOME/Cloud-Computing-Setup
-        echo "The setup files have been deleted"
+        cd
+        sleep 5
+        git clone https://github.com/hanifr/Nginx-Server-Blocks.git
+        echo "Please head to Folder Nginx-Server-Blocks to setup nginx service"
         fi

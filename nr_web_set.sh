@@ -46,5 +46,7 @@ server {
 }
 EOL
 sudo ln -s /etc/nginx/sites-available/node-red.example.com /etc/nginx/sites-enabled/
-
+sudo systemctl reload nginx
+sleep 5
+sudo systemctl start nr
 echo "${_MAGENTA}Installation Progress....Node-Red :: completed${_RESET}"
