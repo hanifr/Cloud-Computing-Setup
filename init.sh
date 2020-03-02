@@ -30,11 +30,11 @@ fi
 echo "${_CYAN}Installation Progress....${_RESET}"
 
 # Adding privilage to setup files
-chmod +x $HOME/cloud-computing-setup/nred.sh
-chmod +x $HOME/cloud-computing-setup/nr_dependencies.sh
-chmod +x $HOME/cloud-computing-setup/mosq.sh
-chmod +x $HOME/cloud-computing-setup/mosq_back.sh
-chmod +x $HOME/cloud-computing-setup/fireset.sh
+chmod +x $HOME/$USER/Cloud-Computing-Setup/nred.sh
+chmod +x $HOME/$USER/Cloud-Computing-Setup/nr_dependencies.sh
+chmod +x $HOME/$USER/Cloud-Computing-Setup/mosq.sh
+chmod +x $HOME/$USER/Cloud-Computing-Setup/mosq_back.sh
+chmod +x $HOME/$USER/Cloud-Computing-Setup/fireset.sh
 
 . nred.sh
 sleep 5
@@ -44,10 +44,10 @@ sleep 5
 echo 
 echo "${_CYAN}Installation Progress....Node-Red, Mosquitto, and Firewall are all completed${_RESET}"
 echo
-echo "${_CYAN}Do you want to keep the setup files?${_RESET} $_setfile"
+echo "${_CYAN}Do you want delet the setup files?${_RESET} $_setfile"
                 read -p "Enter yes or no: " _setfile
 c1="yes"
         if [ "$_setfile" = "$c1" ]; then
-        rm -rf $HOME/cloud-computing-setup
+        rm -rf $HOME/$USER/Cloud-Computing-Setup
         echo "The setup files have been deleted"
         fi
