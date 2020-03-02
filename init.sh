@@ -33,7 +33,6 @@ echo "${_CYAN}Installation Progress....${_RESET}"
 chmod +x $HOME/Cloud-Computing-Setup/nred.sh
 chmod +x $HOME/Cloud-Computing-Setup/nr_dependencies.sh
 chmod +x $HOME/Cloud-Computing-Setup/mosq.sh
-chmod +x $HOME/Cloud-Computing-Setup/mosq_back.sh
 chmod +x $HOME/Cloud-Computing-Setup/fireset.sh
 
 . nred.sh
@@ -44,7 +43,7 @@ sleep 5
 echo 
 echo "${_CYAN}Installation Progress....Node-Red, Mosquitto, and Firewall are all completed${_RESET}"
 echo
-echo "${_CYAN}Do you want delet the setup files?${_RESET} $_setfile"
+echo "${_CYAN}Do you want delete the setup files?${_RESET} $_setfile"
                 read -p "Enter yes or no: " _setfile
 c1="yes"
         if [ "$_setfile" = "$c1" ]; then

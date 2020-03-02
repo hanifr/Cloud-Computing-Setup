@@ -42,7 +42,7 @@ echo "[*] Creating mosquitto systemd service"
 #    sudo systemctl daemon-reload
 #    sudo systemctl enable mosquitto.service
 #    sudo systemctl start mosquitto.service
-
+chmod +x $HOME/Cloud-Computing-Setup/mosq_back.sh
 . mosq_back.sh
 
 echo "To see MQTT Mosquitto status run \"sudo systemctl status mosquitto\" command"

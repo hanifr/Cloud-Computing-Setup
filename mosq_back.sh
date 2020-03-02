@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat >/etc/mosquitto/conf.d/default.conf <<EOL
+sudo cat >/etc/mosquitto/conf.d/default.conf <<EOL
 allow_anonymous true
 #password_file /etc/mosquitto/passwd
 
