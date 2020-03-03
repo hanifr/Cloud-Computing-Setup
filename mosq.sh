@@ -14,7 +14,12 @@ echo "${_CYAN}\"sudo mosquitto_passwd -c /etc/mosquitto/passwd your_username\"${
 echo
 echo "${_CYAN}\"then enter your password\"${_RESET}"
 echo
-echo "${_CYAN}Now MQTT Mosquitto will be according to your domain_name${_RESET}"
+echo "${_CYAN}Please Enter your domain_name${_RESET} $_domain"
+                read -p "Enter your Domain_name or localhost: " _domain
+echo
+echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
+echo
+
 
 # start doing stuff: preparing MQTT Mosquitto
 # preparing script background work and work under reboot
@@ -46,7 +51,7 @@ cat >/etc/mosquitto/conf.d/default.conf <<EOL
 allow_anonymous true
 #password_file /etc/mosquitto/passwd
 
-listener 1883 localhost
+listener 1883 $_domain
 
 #listener 8883
 #certfile /etc/letsencrypt/live/example.com/cert.pem
@@ -64,7 +69,8 @@ listener 1883 localhost
 EOL
 chmod +x $HOME/Cloud-Computing-Setup/mosq_back.sh
 . mosq_back.sh
-
+echo "${_CYAN}Now MQTT Mosquitto will be according to your domain name $_domain${_RESET}"
+echo
 echo "To see MQTT Mosquitto status run \"sudo systemctl status mosquitto\" command"
 echo "${_YELLOW}The apps is now running on background${_RESET}"
 

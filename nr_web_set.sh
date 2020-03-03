@@ -8,18 +8,24 @@ sudo apt-get update
 
 sudo apt-get install python-certbot-nginx
 
+echo "${_CYAN}Please Enter your domain_name${_RESET} $_domain"
+                read -p "Enter your Domain_name or localhost: " _domain
+echo
+echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
+echo
+
 # Securing Node-RED website
-sudo certbot certonly --standalone --preferred-challenges http -d node-red.example.com
+sudo certbot certonly --standalone --preferred-challenges http -d $_domain
 
-# sudo certbot --nginx -d node-red.example.com
+# sudo certbot --nginx -d $_domain
 
-cat >/etc/nginx/sites-available/node-red.example.com <<EOL 
+cat >/etc/nginx/sites-available/$_domain <<EOL 
 server {
     listen 80;
     listen 443 ssl http2;
-    server_name node-red.example.com;
-    ssl_certificate /etc/letsencrypt/live/node-red.example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/node-red.example.com/privkey.pem;
+    server_name $_domain;
+    ssl_certificate /etc/letsencrypt/live/$_domain/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$_domain/privkey.pem;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
     ssl_prefer_server_ciphers On;
@@ -45,7 +51,7 @@ server {
     }
 }
 EOL
-sudo ln -s /etc/nginx/sites-available/node-red.example.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/$_domain /etc/nginx/sites-enabled/
 sudo systemctl reload nginx
 sleep 5
 sudo systemctl start nr
