@@ -34,7 +34,7 @@ chmod +x $HOME/Cloud-Computing-Setup/nred.sh
 chmod +x $HOME/Cloud-Computing-Setup/nr_dependencies.sh
 chmod +x $HOME/Cloud-Computing-Setup/mosq.sh
 chmod +x $HOME/Cloud-Computing-Setup/fireset.sh
-chmod +x $HOME/Cloud-Computing-Setup/nr_secured.sh
+chmod +x $HOME/Cloud-Computing-Setup/nr_secure.sh
 
 . nred.sh
 sleep 5

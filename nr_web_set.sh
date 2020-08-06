@@ -15,11 +15,11 @@ echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
 echo
 
 # Securing Node-RED website
-sudo certbot certonly --standalone --preferred-challenges http -d $_domain
+#sudo certbot certonly --standalone --preferred-challenges http -d $_domain
 
-# sudo certbot --nginx -d $_domain
+sudo certbot --nginx -d $_domain
 
-cat >/etc/nginx/sites-available/$_domain <<EOL 
+sudo cat >/etc/nginx/sites-available/$_domain <<EOL 
 server {
     listen 80;
     listen 443 ssl http2;
@@ -38,7 +38,7 @@ server {
         if ($scheme = http) {
             return 301 https://$server_name$request_uri;
         }
-        proxy_pass http://127.0.0.1:1880;
+        proxy_pass http://localhost:1880;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_http_version 1.1;
@@ -56,3 +56,6 @@ sudo systemctl reload nginx
 sleep 5
 sudo systemctl start nr
 echo "${_MAGENTA}Installation Progress....Node-Red :: completed${_RESET}"
+echo
+echo "${_RED}To secure node-red, run \"./nr_secure.sh\"${_RESET}"
+echo
