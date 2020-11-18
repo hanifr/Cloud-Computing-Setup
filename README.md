@@ -7,14 +7,21 @@
 
 ```
 adduser username
+
 sudo usermod -aG sudo username
+
 su - username
+
 git clone https://github.com/hanifr/Nginx-Server-Blocks.git
 cd Nginx-Server-Blocks
+
 ./init.sh
-cd https://github.com/hanifr/Cloud-Computing-Setup.git
-git clone 
+cd 
+
+git clone https://github.com/hanifr/Cloud-Computing-Setup.git
+
 cd /Cloud-Computing-Setup
+
 ./init.sh
 ```
  
