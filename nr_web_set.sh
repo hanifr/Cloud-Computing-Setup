@@ -6,7 +6,7 @@ sudo add-apt-repository ppa:certbot/certbot
 
 sudo apt-get update
 
-sudo apt-get install python-certbot-nginx
+sudo apt-get install python3-certbot-nginx
 
 echo "${_CYAN}Please Enter your domain_name${_RESET} $_domain"
                 read -p "Enter your Domain_name or localhost: " _domain
