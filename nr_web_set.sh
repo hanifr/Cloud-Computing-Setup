@@ -19,6 +19,12 @@ echo
 
 sudo certbot --nginx -d $_domain
 
+sudo ufw allow 80
+
+sudo ufw allow 443
+
+sudo ufw allow 'Nginx HTTP'
+
 sudo cat >/etc/nginx/sites-available/$_domain <<EOL 
 server {
     listen 80;
@@ -52,6 +58,15 @@ server {
 }
 EOL
 sudo ln -s /etc/nginx/sites-available/$_domain /etc/nginx/sites-enabled/
+
+sudo rm -rf /etc/nginx/sites-available/default
+
+sudo rm -rf /etc/nginx/sites-enabled/default
+
+sudo systemctl daemon-reload
+
+sudo nginx -t
+
 sudo systemctl reload nginx
 sleep 5
 sudo systemctl start nr
