@@ -14,6 +14,8 @@ echo "${_GREEN}INSTALL DEPENDS STARTED${_RESET}"
     sudo apt-get install npm
     
     #  Install Node-RED
+    sudo apt install build-essential git curl
+    bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered) --node14
     sudo npm install -g --unsafe-perm node-red node-red-admin
     sleep 5
 echo "${_CYAN} Now I will set open port 1880${_RESET}"

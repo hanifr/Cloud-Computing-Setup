@@ -2,11 +2,12 @@
 #!/bin/bash
 
 # Install CERTBOT for SSL Security
-sudo add-apt-repository ppa:certbot/certbot
-
 sudo apt-get update
-
-sudo apt-get install python3-certbot-nginx
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+# Install Certbot's Nginx package
+#sudo apt install python-certbot-nginx
+sudo apt install python3-certbot-nginx
 
 echo "${_CYAN}Please Enter your domain_name${_RESET} $_domain"
                 read -p "Enter your Domain_name or localhost: " _domain
